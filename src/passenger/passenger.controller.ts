@@ -6,13 +6,17 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { PassengerService } from './passenger.service';
 import { PassengerDTO } from './dto/passenger.dto';
 import { UpdatePassengerDTO } from './dto/update.passenger.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAutHGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @ApiTags('passenger')
+@ApiBearerAuth()
+@UseGuards(JwtAutHGuard)
 @Controller('api/v1/passenger')
 export class PassengerController {
   constructor(private readonly passengerService: PassengerService) {}

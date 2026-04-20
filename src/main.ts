@@ -19,7 +19,7 @@ async function bootstrap() {
     .setTitle('API  SUPER FLIGHT')
     .setDescription('Documentación de la API DE VUELOS')
     .setVersion('1.0')
-    //.addBearerAuth() // opcional si usas JWT
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
